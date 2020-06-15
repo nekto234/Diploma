@@ -1,0 +1,200 @@
+﻿@model EducationPlatform.Models.ViewModels.Courses.CourseDetailsViewModel
+
+@{
+    ViewData["Title"] = "Деталі про курс";
+}
+
+
+<div class="row">
+    <div class="col-xl-6 col-lg-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between">
+                    <div>
+                        <h3 class="card-title text-uppercase">Курс: <span>@Model.Course.Name</span></h3>
+
+                        <p class="mb-3">Викладач: <span class="font-weight-bold">@Model.Teacher.LastName @Model.Teacher.FirstName @Model.Teacher.MiddleName</span></p>
+                        <p>Початок: <span class="font-weight-bold">@Model.Course.StartDate.ToString("dd.MM.yyyy")</span></p>
+                        <p class="mb-3">Кінець: <span class="font-weight-bold">@Model.Course.EndDate.Date.ToString("dd.MM.yyyy")</span></p>
+                        <p class="mb-4">
+                            Опис: <span class="text-muted">@Model.Subject.Description</span>
+                        </p>
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <form class="d-inline" method="get" asp-action="Rating" asp-route-courseId="@Model.Course.CourseId">
+                            <button title="Загальний рейтинг" type="submit" class="btn btn-inverse-success btn-sm d-flex align-items-center mr-2">
+                                <i class="mdi mdi-star-circle"></i> <span class="ml-2">Загальний рейтинг</span>
+                            </button>
+                        </form>
+                        @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                        {
+                            <form class="d-inline" method="get" asp-action="Edit" asp-route-courseId="@Model.Course.CourseId">
+                                <button title="Редагувати" type="submit" class="btn btn-inverse-warning btn-sm d-flex align-items-center">
+                                    <i class="mdi mdi-lead-pencil"></i> <span class="ml-2">Редагувати</span>
+                                </button>
+                            </form>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <h6>Модулі</h6>
+                    <table class="table datatable-table">
+                        <thead>
+                            <tr>
+                                <th class="visible">Назва</th>
+                                <th class="visible">Дата</th>
+                                <th class="visible">Опис</th>
+                                @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                                {
+                                    <th>Дії</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var module in Model.Modules)
+                            {
+                                <tr>
+                                    <td>@module.Name</td>
+                                    <td>@module.Date.ToString("dd.MM.yyyy")</td>
+                                    <td>@module.Description</td>
+                                    @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                                    {
+                                        <td>
+                                            <form class="d-inline" method="get" asp-action="SetModuleMark" asp-route-courseId="@Model.Course.CourseId" asp-route-moduleId="@module.Id">
+                                                <button title="Поставити оцінку за модуль" class="p-0 btn btn-inverse-warning btn-icon">
+                                                    <i class="mdi mdi-account-star"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    }
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive mt-4">
+                    <h6>Студенти</h6>
+                    <table class="table datatable-table">
+                        <thead>
+                            <tr>
+                                <th class="visible">Ім'я студента</th>
+                                <th class="visible">Email</th>
+                                <th class="visible">Навички</th>
+                                <th class="visible">Статус</th>
+                                <th>Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var student in Model.Students)
+                            {
+                                <tr>
+                                    <td>@student.User.LastName @student.User.FirstName @student.User.MiddleName</td>
+                                    <td>@student.User.Email</td>
+                                    <td>@student.Skills</td>
+                                    @if (student.User.IsBanned == true)
+                                    {
+                                        <td><span class="badge badge-danger">Заблокований</span></td>
+                                    }
+                                    else if (student.User.IsBanned == false && student.HasAccess.Value == true)
+                                    {
+                                        <td><span class="badge badge-success">Активний</span></td>
+                                    }
+                                    else if (!student.HasAccess.Value)
+                                    {
+                                        <td><span class="badge badge-warning">Не підтверджено</span></td>
+                                    }
+                                    <td>
+                                        @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                                        {
+                                            <form class="d-inline" method="get" asp-action="SetStudentMark" asp-route-courseId="@Model.Course.CourseId" asp-route-studentId="@student.StudentId">
+                                                <button title="Поставити оцінку студенту" type="submit" class="p-0 btn btn-inverse-warning btn-icon">
+                                                    <i class="mdi mdi-account-star"></i>
+                                                </button>
+                                            </form>
+                                        }
+
+                                        <form class="d-inline" method="get" asp-action="RatingStudent" asp-route-courseId="@Model.Course.CourseId" asp-route-studentId="@student.StudentId">
+                                            <button title="Рейтинг" type="submit" class="p-0 btn btn-inverse-success btn-icon">
+                                                <i class="mdi mdi-star-circle"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6 col-lg-12 stretch-card">
+        <div class="card">
+            <div class="card-body"><div id="calendar"></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-1">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Статистика модуля</h3>
+                <canvas id="moduleChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Статистика студентів</h3>
+                <canvas id="studentRating"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Статистика студентів</h3>
+                <canvas id="minAndMaxRating"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href='~/lib/fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='~/lib/fullcalendar/daygrid/main.css' rel='stylesheet' />
+    <link href='~/lib/fullcalendar/timegrid/main.css' rel='stylesheet' />
+    <link href='~/lib/fullcalendar/list/main.css' rel='stylesheet' />
+}
+
+@section Scripts {
+    <script src='~/lib/fullcalendar/core/main.js'></script>
+    <script src='~/lib/fullcalendar/core/locales/uk.js'></script>
+    <script src='~/lib/fullcalendar/interaction/main.js'></script>
+    <script src='~/lib/fullcalendar/daygrid/main.js'></script>
+    <script src='~/lib/fullcalendar/timegrid/main.js'></script>
+    <script src='~/lib/fullcalendar/list/main.js'></script>
+    <script src="~/lib/template/js/Chart.min.js"></script>
+    <script>
+                const courseId = '@Model.Course.CourseId';
+    </script>
+
+    <script src="~/js/chart.js"></script>
+    <script>
+
+        const GENERAL = {
+            calendarURL: '@Url.Action("CourseSchedule", "Calendar", new { id = Model.Course.CourseId })',
+        }
+
+    </script>
+    <script src='~/js/calendar.js'></script>
+}

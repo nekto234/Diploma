@@ -1,0 +1,35 @@
+﻿@model EducationPlatform.Models.ViewModels.UserViewModel
+
+
+<form method="post" class="form-sample" asp-action="Edit" asp-controller="Teachers">
+    <div asp-validation-summary="ModelOnly"></div>
+    @Html.HiddenFor(x => x.Email)
+    <div class="form-group">
+        <label asp-for="LastName">Прізвище</label>
+        <input asp-for="LastName" class="form-control" type="text" placeholder="Last name">
+        <span asp-validation-for="LastName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName">Ім'я</label>
+        <input asp-for="FirstName" class="form-control" type="text" placeholder="First name">
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MiddleName">По батькові</label>
+        <input asp-for="MiddleName" class="form-control" type="text" placeholder="По батькові">
+        <span asp-validation-for="MiddleName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" disabled class="form-control" type="email" placeholder="Email">
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber">Мобільний телефон</label>
+        <input asp-for="PhoneNumber" class="form-control" type="number" placeholder="Mobile">
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+
+    <button class="btn btn-primary mr-2" type="submit">Зберегти</button>
+    <button class="btn btn-light mr-2" type="reset">Скасувати</button>
+</form>

@@ -1,0 +1,68 @@
+﻿@model EducationPlatform.Models.Entities.User
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="d-flex align-items-start justify-content-between">
+            <div>
+                <h3 class="card-title text-uppercase">Адміністратор: <span>@Model.LastName @Model.FirstName @Model.MiddleName</span></h3>
+                <p class="mb-3">Email: <span class="font-weight-bold">@Model.Email</span></p>
+                <p class="mb-3">Прізвище: <span class="font-weight-bold">@Model.LastName</span></p>
+                <p class="mb-3">Імя: <span class="font-weight-bold">@Model.FirstName</span></p>
+                <p class="mb-3">По батькові: <span class="font-weight-bold">@Model.MiddleName</span></p>
+                <p class="mb-3">Номер телефону: <span class="font-weight-bold">@Model.PhoneNumber</span></p>
+            </div>
+            <div class="d-flex flex-wrap">
+                <form class="d-inline" method="get" asp-controller="Teachers" asp-action="Setting" asp-route-email="@Model.Email">
+                    <button title="Редагувати" type="submit" class="btn btn-inverse-warning btn-sm d-flex align-items-center">
+                        <i class="mdi mdi-lead-pencil"></i> <span class="ml-2">Редагувати</span>
+                    </button>
+                </form>
+                @if (ViewBag.HasTwoFactor == true)
+                {
+                    <form class="d-inline" method="post" asp-controller="Account" asp-action="SetTwoFactorAuthorization" asp-route-grant="false">
+                        <button title="Виключити двофакторну авторизацію" type="submit" class="btn btn-inverse-danger h-100 btn-sm d-flex text-center ml-2">
+                            <span>Виключити TWA</span>
+                        </button>
+
+                    </form>
+                }
+                else
+                {
+                    <form class="d-inline" method="post" asp-controller="Account" asp-action="SetTwoFactorAuthorization" asp-route-grant="true">
+                        <button title="Включити двофакторну авторизацію" type="submit" class="btn btn-inverse-success h-100 btn-sm d-flex text-center ml-2">
+                            <span>Включити TWA</span>
+                        </button>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Статистика популярності курсів</h3>
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Статистика успішності курсів (середній бал)</h3>
+                <canvas id="lineChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/template/js/Chart.min.js"></script>
+    <script src="~/js/chart.js"></script>
+}

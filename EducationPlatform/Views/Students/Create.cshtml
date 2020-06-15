@@ -1,0 +1,21 @@
+﻿@model EducationPlatform.Models.ViewModels.StudentFormViewModel
+@{
+    ViewData["Title"] = "Додавання студента";
+
+    ViewData["Action"] = "Create";
+}
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Форма студента</h4>
+                @await  Html.PartialAsync("_StudentForm", Model, ViewData)
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

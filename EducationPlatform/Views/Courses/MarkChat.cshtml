@@ -1,0 +1,85 @@
+﻿@model EducationPlatform.Models.ViewModels.Courses.CourseStudentModuleChat;
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<EducationPlatform.Models.Entities.User> UserManager
+@{
+    ViewData["Title"] = "Чат по модулю курсу";
+}
+@section Styles{
+    <link href="~/css/textArea.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h3 class="card-title text-uppercase">Курс: <span>@Model.Mark.CourseModule.Course.Name</span></h3>
+
+                    <p class="bg-">Модуль: <span class="font-weight-bold">@Model.Mark.CourseModule.Module.Name</p>
+                    <p class="bg-">Викладач: <span class="font-weight-bold">@Model.Mark.CourseModule.Course.Teacher.LastName @Model.Mark.CourseModule.Course.Teacher.FirstName @Model.Mark.CourseModule.Course.Teacher.MiddleName</span></p>
+                    @if (Model.Mark.CourseModule.Module.HasTest == true)
+                    {
+                        <p>Оцінка за тести: <span class="font-weight-bold">@Model.Mark.CourseModule.Module.MinTestMark / @Model.Mark.TestMark / @Model.Mark.CourseModule.Module.MaxTestMark</span></p>
+                    }
+                    @if (Model.Mark.CourseModule.Module.HasLab == true)
+                    {
+                        <p>Оцінка за лабораторну роботу: <span class="font-weight-bold">@Model.Mark.CourseModule.Module.MinLabMark / @Model.Mark.LabMark / @Model.Mark.CourseModule.Module.MaxLabMark</span></p>
+                    }
+                    <h3 class="card-title text-uppercase">Чат: <span>Обговорення оцінки</span></h3>
+                    <div style="min-width: 200px;" class="col-10 px-0">
+                        <div class="px-4 bg-light py-5 chat-box bg-white" id="messages-container">
+                            @foreach (var message in Model.Comments)
+                            {
+                                if (message.UserId == (await UserManager.FindByNameAsync(User.Identity.Name)).Id)
+                                {
+                                    <div class="media w-50 ml-auto mb-3">
+                                        <div class="media-body">
+                                            <div class="bg-primary rounded py-2 px-3 mb-2">
+                                                <p class="text-small mb-0 text-white">@Html.Raw(message.Comment)</p>
+                                            </div>
+                                            <p class="small text-muted">@message.CreatedAt.Value.ToString("dd.MM.yyyy, HH:mm:ss")</p>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="media w-50 mb-3">
+                                        <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">
+                                        <div class="media-body ml-3">
+                                            <p class="small text-muted">@((await UserManager.FindByIdAsync(message.UserId)).LastName) @((await UserManager.FindByIdAsync(message.UserId)).FirstName)</p>
+                                            <div class="bg-light rounded py-2 px-3 mb-2">
+                                                <p class="text-small mb-0 text-muted">@Html.Raw(message.Comment)</p>
+                                            </div>
+                                            <p class="small text-muted">@message.CreatedAt.Value.ToString("dd.MM.yyyy, HH:mm:ss")</p>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+
+                        <!-- Typing area -->
+                        <form method="post" class="chat-form" asp-controller="Courses" asp-action="MarkChat">
+                            @Html.HiddenFor(x => x.MarkId)
+                            @Html.HiddenFor(x => x.UserId)
+                            <div class="input-group" style="width: 100%">
+                                <textarea id="full-featured-non-premium" asp-for="Comment">
+                                     hahaha
+                                </textarea>
+                                <div class="input-group-append">
+                                    <button id="button-addon2" type="submit" class="btn btn-primary"> Надіслати</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="~/js/textArea.js"></script>
+}

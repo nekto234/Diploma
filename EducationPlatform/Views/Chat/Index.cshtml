@@ -1,0 +1,85 @@
+﻿@model EducationPlatform.Models.ViewModels.ChatViewModel
+
+@{
+    ViewData["Title"] = "Чат";
+}
+
+
+<div class="row rounded-lg overflow-hidden">
+    <!-- Users box-->
+    <div class="col-2 px-0">
+        <div class="bg-white">
+
+            <div class="bg-gray px-4 py-2 bg-light">
+                <p class="h5 mb-0 py-1">Онлайн</p>
+            </div>
+
+            <div class="messages-box">
+                <div class="list-group rounded-0" id="online-list">
+                    @foreach (var user in Model.Users)
+                    {
+                        <a href="#" data-user-id="${user.id}" class="list-group-item list-group-item-action list-group-item-light rounded-0 @(Model.UserId == user.Id ? "active" : "")">
+                            <div class="media">
+                                <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">
+                                <div class="media-body ml-4">
+                                    <div class="d-flex align-items-center justify-content-between mb-1">
+                                        <h6 class="mb-0">@user.LastName @user.FirstName</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Chat Box-->
+    <div class="col-10 px-0">
+        <div class="px-4 py-5 chat-box bg-white" id="messages-container">
+            @foreach (var message in Model.Messages)
+            {
+                if (message.user.Id == Model.UserId)
+                {
+                    <div class="media w-50 ml-auto mb-3">
+                        <div class="media-body">
+                            <div class="bg-primary rounded py-2 px-3 mb-2">
+                                <p class="text-small mb-0 text-white">@message.message</p>
+                            </div>
+                            <p class="small text-muted">@message.date.ToString("dd.MM.yyyy, HH:mm:ss")</p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="media w-50 mb-3">
+                        <img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">
+                        <div class="media-body ml-3">
+                            <p class="small text-muted">@message.user.LastName @message.user.FirstName</p>
+                            <div class="bg-light rounded py-2 px-3 mb-2">
+                                <p class="text-small mb-0 text-muted">@message.message</p>
+                            </div>
+                            <p class="small text-muted">@message.date.ToString("dd.MM.yyyy, HH:mm:ss")</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <!-- Typing area -->
+        <form class="bg-light chat-form">
+            <div class="input-group">
+                <input type="hidden" id="my-user-id" value="@Model.UserId" />
+                <input type="text" class="form-control" id="message-box" placeholder="Написати повідомення..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button id="button-addon2" type="submit" class="btn btn-primary"> Надіслати</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/chat.js"></script>
+}

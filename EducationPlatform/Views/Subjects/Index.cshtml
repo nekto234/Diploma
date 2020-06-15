@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EducationPlatform.Models.ViewModels.SubjectViewModel>
+
+@{
+    ViewData["Title"] = "Предмети";
+}
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Error
+    </div>
+}
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-start justify-content-between">
+            <div>
+                <h5 class="card-title">ПРЕДМЕТИ</h5>
+                <p class="card-text">Усього зареєстрованних в системі предметів: @Model.Count() </p>
+            </div>
+            <div>
+                <a class="btn btn-inverse-primary btn-sm d-flex align-items-center" asp-action="Create">
+                    <i class="mdi mdi-plus-circle"></i> <span class="ml-2">Додати</span>
+                </a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover datatable-table">
+                <thead class="text-left">
+                    <tr>
+                        <th class="visible">Назва</th>
+                        <th class="visible">Кількість модулів</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody class="text-left">
+                    @foreach (var subject in Model)
+                    {
+                        <tr>
+                            <td class="visible">@subject.Name</td>
+                            <td class="visible">@subject.Module.Count()</td>
+                            <td class="text-left">
+                                <form class="d-inline" method="get" asp-action="Edit" asp-route-id="@subject.SubjectId">
+                                    <button type="submit" class="btn btn-inverse-info btn-sm btn-icon align-items-center">
+                                        <i class="mdi mdi-lead-pencil"></i>
+                                    </button>
+                                </form>
+                                <form class="d-inline" method="get" asp-action="Modules" asp-route-subjectId="@subject.SubjectId">
+                                    <button type="submit" class="btn btn-inverse-primary btn-icon">
+                                        <i class="mdi mdi-library-plus"></i>
+                                    </button>
+                                </form>
+                                <form class="d-inline" method="post" asp-action="Delete" asp-route-id="@subject.SubjectId">
+                                    <button type="submit" class="btn btn-inverse-danger btn-icon">
+                                        <i class="mdi mdi-delete-variant"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

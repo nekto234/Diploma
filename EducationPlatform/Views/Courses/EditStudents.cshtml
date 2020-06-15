@@ -1,0 +1,88 @@
+﻿@model EducationPlatform.Models.ViewModels.Courses.CourseEditStudentsViewModel
+
+@{
+    ViewData["Title"] = "Редагування студента";
+}
+
+<div class="row">
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 col-xs-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between">
+                    <div>
+                        <h3 class="card-title text-uppercase">Курс: <span>@Model.Course.Name</span></h3>
+
+                        <p class="mb-3">Викладач: <span class="font-weight-bold">@Model.Course.Teacher.LastName @Model.Course.Teacher.FirstName @Model.Course.Teacher.MiddleName</span></p>
+                        <p>Початок: <span class="font-weight-bold">@Model.Course.Start.ToString("dd.MM.yyyy")</span></p>
+                        <p class="mb-3">Кінець: <span class="font-weight-bold">@Model.Course.End.ToString("dd.MM.yyyy")</span></p>
+                        <p class="mb-4">
+                            Опис: <span class="text-muted">@Model.Course.Description</span>
+                        </p>
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <a href="@Url.Action("EditModules", "Courses",  new { courseId = Model.CourseId, subjectId = Model.Course.SubjectId })" class="btn btn-inverse-secondary btn-sm d-flex align-items-center">
+                            <i class="mdi mdi-arrow-left"></i> <span class="ml-2">Повернутися</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <h6 class="mb-3">Студенти</h6>
+
+                    <form method="post" asp-action="EditStudents" asp-controller="Courses">
+
+                        @Html.HiddenFor(x => x.CourseId)
+                        @Html.HiddenFor(x => x.Course.SubjectId)
+                        <div class="form-group">
+
+                            @for (var i = 0; i < Model.Students.Count; i++)
+                            {
+                                <div class="form-check form-check-primary mb-3">
+                                    <label class="form-check-label" asp-for="@Model.Students[i].Selected">
+                                        <input type="checkbox" class="form-check-input" asp-for="@Model.Students[i].Selected">
+                                        @Model.Students[i].Name
+                                        <i class="input-helper"></i>
+                                    </label>
+                                    <input type="hidden" asp-for="@Model.Students[i].Id" />
+                                    <input type="hidden" asp-for="@Model.Students[i].Name" />
+                                </div>
+                            }
+
+                            @*<div class="form-check form-check-primary mb-3">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input">
+                                    Студент 1
+                                    <i class="input-helper"></i>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-primary mb-3">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input">
+                                    Студент 2
+                                    <i class="input-helper"></i>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-primary mb-3">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input">
+                                    Студент 3
+                                    <i class="input-helper"></i>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-primary mb-3">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input">
+                                    Студент 4
+                                    <i class="input-helper"></i>
+                                </label>
+                            </div>*@
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mr-2">Зберегти</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

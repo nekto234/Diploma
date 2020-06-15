@@ -1,0 +1,128 @@
+﻿@model IEnumerable<EducationPlatform.Models.ViewModels.ModuleViewModel>
+
+@{
+    ViewData["Title"] = "Модулі";
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Error
+    </div>
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-start justify-content-between">
+            <div>
+                <h4 class="card-title">Предмет: ASP.NET</h4>
+                <h5>Модулі</h5>
+            </div>
+            <div>
+                <form class="d-inline" method="get" asp-action="CreateModule" asp-route-subjectId="@ViewBag.SubjectId">
+                    <button type="submit" class="btn btn-inverse-primary btn-sm d-flex align-items-center">
+                        <i class="mdi mdi-plus-circle"></i> <span class="ml-2">Додати</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="table-responsive pt-3">
+            <table class="table table-bordered datatable-table">
+                <thead>
+                    <tr>
+                        <th class="visible">Назва</th>
+                        <th class="visible">Тест</th>
+                        <th class="visible">Лабораторна</th>
+                        <th class="visible">Оцінка за тест (min/max)</th>
+                        <th class="visible">Оцінка за лабораторну (min/max)</th>
+                        <th class="visible">Файли</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var module in Model)
+                    {
+                        <tr>
+                            <td>@module.Name</td>
+                            <td>
+                                @if (module.HasTest == true)
+                                {
+                                    <span class="text-success">
+                                        Присутній
+                                    </span>
+                                }
+                                @if (module.HasTest == false)
+                                {
+                                    <span class="text-primary">
+                                        Відсутній
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                @if (module.HasLab == true)
+                                {
+                                    <span class="text-success">
+                                        Присутня
+                                    </span>
+                                }
+                                @if (module.HasLab == false)
+                                {
+                                    <span class="text-primary">
+                                        Відсутня
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                @if (module.HasTest == true)
+                                {
+                                    <span>
+                                        @module.MinTestMark / @module.MaxTestMark
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
+
+                            </td>
+                            <td>
+                                @if (module.HasLab == true)
+                                {
+                                    <span>
+                                        @module.MinLabMark / @module.MaxLabMark
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
+                            </td>
+                            <td>
+                                @module.CountFiles
+                            </td>
+                            <td class="text-left">
+                                <form class="d-inline" method="get" asp-action="EditModule" asp-route-moduleId="@module.ModuleId">
+                                    <button type="submit" class="btn btn-inverse-info btn-icon">
+                                        <i class="mdi mdi-lead-pencil"></i>
+                                    </button>
+                                </form>
+                                <form class="d-inline" method="get" asp-action="ModuleFiles" asp-route-moduleId="@module.ModuleId">
+                                    <button type="submit" class="btn btn-inverse-info btn-icon">
+                                        <i class="mdi mdi-file"></i>
+                                    </button>
+                                </form>
+                                <form class="d-inline" method="post" asp-action="DeleteModule" asp-route-moduleId="@module.ModuleId">
+                                    <input type="hidden" name="subjectId" value="@ViewBag.SubjectId" />
+                                    <button type="submit" class="btn btn-inverse-danger btn-icon">
+                                        <i class="mdi mdi-delete-variant"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

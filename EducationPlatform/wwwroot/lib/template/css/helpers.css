@@ -1,0 +1,8 @@
+.mark-control {
+  max-width: 100px;
+}
+
+.form-check-label.mark-label-checkbox {
+  margin: 0;
+  margin-right: 2.5rem;
+}

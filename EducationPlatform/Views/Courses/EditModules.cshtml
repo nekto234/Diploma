@@ -1,0 +1,63 @@
+﻿@model EducationPlatform.Models.ViewModels.Courses.CourseEditModulesViewModel
+
+@{
+    ViewData["Title"] = "Редагування модуля";
+}
+
+<div class="row">
+    <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 col-xs-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between">
+                    <div>
+                        <h3 class="card-title text-uppercase">Курс: <span>@Model.Course.Name</span></h3>
+
+                        <p class="mb-3">Викладач: <span class="font-weight-bold">@Model.Course.Teacher.LastName @Model.Course.Teacher.FirstName @Model.Course.Teacher.MiddleName</span></p>
+                        <p>Початок: <span class="font-weight-bold">@Model.Course.Start.ToString("dd.MM.yyyy")</span></p>
+                        <p class="mb-3">Кінець: <span class="font-weight-bold">@Model.Course.End.ToString("dd.MM.yyyy")</span></p>
+                        <p class="mb-4">
+                            Опис: <span class="text-muted">@Model.Course.Description</span>
+                        </p>
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <form class="d-inline" method="get" asp-action="Edit" asp-route-courseId="@Model.Course.CourseId">
+                            <button title="Повернутись" type="submit" class="btn btn-inverse-secondary btn-sm d-flex align-items-center">
+                                <i class="mdi mdi-arrow-left"></i> <span class="ml-2">Повернутися</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <h6 class="mb-3">Модулі</h6>
+
+                    <form method="post" asp-action="EditModules" asp-controller="Courses">
+
+                        @Html.HiddenFor(x => x.CourseId)
+                        @Html.HiddenFor(x => x.SubjectId)
+                        <div class="form-group">
+                            @for (var i = 0; i < Model.Modules.Count; i++)
+                            {
+                                <div class="form-check form-check-primary mb-3">
+                                    <label class="form-check-label" asp-for="@Model.Modules[i].Selected">
+                                        <input type="checkbox" class="form-check-input" asp-for="@Model.Modules[i].Selected">
+                                        @Model.Modules[i].Name
+                                        <i class="input-helper"></i>
+                                    </label>
+                                    <small class="text-muted">@Model.Modules[i].Description</small>
+                                    <input type="hidden" asp-for="@Model.Modules[i].Id" />
+                                    <input type="hidden" asp-for="@Model.Modules[i].Name" />
+                                    <input type="hidden" asp-for="@Model.Modules[i].Description" />
+                                </div>
+                            }
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mr-2">Далі</button>
+                        <button class="btn btn-light">Скасувати</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

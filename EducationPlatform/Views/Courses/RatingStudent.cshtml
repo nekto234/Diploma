@@ -1,0 +1,88 @@
+﻿@model EducationPlatform.Models.ViewModels.Courses.CourseStudentMarksViewModel
+
+@{
+    ViewData["Title"] = "Рейтинг студента";
+    var sum = Model.Marks.Sum(x => (x.Module.MaxLabMark ?? 0) + (x.Module.MaxTestMark ?? 0));
+    int i = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h3 class="card-title text-uppercase">Курс: <span>@Model.Course.Name</span></h3>
+
+                    <p class="mb-3">Викладач: <span class="font-weight-bold">@Model.Course.Teacher.LastName @Model.Course.Teacher.FirstName @Model.Course.Teacher.MiddleName</span></p>
+                    <p>Початок: <span class="font-weight-bold">@Model.Course.StartDate.ToString("dd.MM.yyyy")</span></p>
+                    <p class="mb-3">Кінець: <span class="font-weight-bold">@Model.Course.EndDate.ToString("dd.MM.yyyy")</span></p>
+                    <p class="mb-3">Модулів: <span class="font-weight-bold">@Model.Course.CourseModule.Count</span></p>
+                    <p class="mb-4">
+                        Опис: <span class="text-muted">
+                            @Model.Subject.Description
+                        </span>
+                    </p>
+                </div>
+
+                <div class="table-responsive">
+                    <h6>Рейтинг</h6>
+                    <p>@Model.CurrentStudent.User.LastName @Model.CurrentStudent.User.FirstName @Model.CurrentStudent.User.MiddleName</p>
+                    <p>Загальний рейтинг: <span class="font-weight-bold">@Model.Marks.Sum(x => x.LabMark + x.TestMark)</span> / @Model.Marks.Sum(x => (x.Module.MaxLabMark ?? 0) + (x.Module.MaxTestMark ?? 0)) - <span class="text-success">@(100 * Model.Marks.Sum(x => x.LabMark + x.TestMark) / ((sum == 0) ? 1 : sum))%</span></p>
+                    @if (Model.Marks.Count > 0)
+                    {
+                        <table class="datatable-table w-100">
+                            <thead>
+                                <tr>
+                                    <th class="visible">Модуль</th>
+                                    <th class="visible text-center">Оцінка за тест</th>
+                                    <th class="visible text-center">Оцінка за лабораторну</th>
+                                    <th class="visible text-center">Загалом</th>
+                                    <th class="text-center">Загалом</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Marks)
+                                {
+                                <tr>
+                                    <td>@item.ModuleName</td>
+                                    @if (item.Module.HasTest)
+                                    {
+                                        <td class="text-center">@item.Module.MinTestMark / <span class="font-weight-bold">@item.TestMark</span> / @item.Module.MaxTestMark</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center">-</td>
+                                    }
+
+                                    @if (item.Module.HasLab)
+                                    {
+                                        <td class="text-center">@item.Module.MinLabMark / <span class="font-weight-bold">@item.LabMark</span> / @item.Module.MaxLabMark</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center">-</td>
+                                    }
+                                    <td class="text-center">@((item.Module.MinTestMark ?? 0) + (item.Module.MinLabMark ?? 0)) / <span class="font-weight-bold">@(item.LabMark + item.TestMark)</span> / @((item.Module.MaxTestMark ?? 0) + (item.Module.MaxLabMark ?? 0))</td>
+                                    <td class="text-center">
+                                        <form class="d-inline" method="get" asp-action="MarkChat" asp-route-markId="@item.MarkId">
+                                        <button type="submit" class="btn btn-inverse-primary btn-icon">
+                                            <i class="mdi mdi-wechat"></i>
+                                        </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {i++;}
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div>Не знайдено жодного модуля на курсі!</div>
+                    }
+                    <small class="text-muted">Оцінка: "[min]/<span class="font-weight-bold">[ВАША ОЦІНКА]</span>/[max]"</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

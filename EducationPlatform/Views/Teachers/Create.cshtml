@@ -1,0 +1,48 @@
+﻿@model EducationPlatform.Models.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Додавання викладача";
+}
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Додати викладача</h5>
+            <form method="post" class="form-sample">
+                <div class="form-group">
+                    <label asp-for="LastName">Прізвище</label>
+                    <input asp-for="LastName" class="form-control" type="text" placeholder="Прізвище">
+                    <span asp-validation-for="LastName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FirstName">Ім'я</label>
+                    <input asp-for="FirstName" class="form-control" type="text" placeholder="Ім'я">
+                    <span asp-validation-for="FirstName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MiddleName">По батькові</label>
+                    <input asp-for="MiddleName" class="form-control" type="text" placeholder="По батькові">
+                    <span asp-validation-for="MiddleName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber">Мобільний телефон</label>
+                    <input asp-for="PhoneNumber" class="form-control" type="number" placeholder="Номер телефону">
+                    <span asp-validation-for="PhoneNumber"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Електронна пошта</label>
+                    <input asp-for="Email" class="form-control" type="email" placeholder="Email">
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password">Пароль</label>
+                    <input asp-for="Password" class="form-control" type="password" placeholder="Пароль..">
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <button class="btn btn-primary mr-2" type="submit">Зберегти</button>
+                <button class="btn btn-light mr-2" type="reset">Скасувати</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,179 @@
+﻿@model EducationPlatform.Models.ViewModels.StudentFormViewModel
+
+<form class="form-sample" method="post" asp-controller="Students" asp-action="@ViewData["Action"]">
+    <div asp-validation-summary="ModelOnly"></div>
+    <p class="card-description">
+        Особиста інформація:
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label asp-for="LastName" class="col-sm-3 col-form-label">Прізвище:</label>
+                <div class="col-sm-9">
+                    <input asp-for="LastName" type="text" class="form-control" />
+                    <span class="small" asp-validation-for="LastName"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label asp-for="FirstName" class="col-sm-3 col-form-label">Ім'я:</label>
+                <div class="col-sm-9">
+                    <input asp-for="FirstName" type="text" class="form-control" />
+                    <span class="small" asp-validation-for="FirstName"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label asp-for="MiddleName" class="col-sm-3 col-form-label">По батькові:</label>
+                <div class="col-sm-9">
+                    <input asp-for="MiddleName" type="text" class="form-control" />
+                    <span class="small" asp-validation-for="MiddleName"></span>
+                </div>
+            </div>
+        </div>
+        @if ((string)ViewData["Action"] == "Edit")
+        {
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label asp-for="Email" class="col-sm-3 col-form-label">Електронна пошта:</label>
+                    <div class="col-sm-9">
+                        @Html.HiddenFor(x => x.Email)
+                        <input asp-for="Email" disabled type="email" class="form-control" />
+                        <span class="small" asp-validation-for="Email"></span>
+                    </div>
+                </div>
+            </div>
+        }
+        @if ((string)ViewData["Action"] == "Create")
+        {
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label asp-for="Email" class="col-sm-3 col-form-label">Електронна пошта:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Email" type="email" class="form-control" />
+                        <span class="small" asp-validation-for="Email"></span>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label asp-for="PhoneNumber" class="col-sm-3 col-form-label">Номер телефону:</label>
+                <div class="col-sm-9">
+                    <input asp-for="PhoneNumber" type="text" class="form-control" />
+                    <span class="small" asp-validation-for="PhoneNumber"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="form-group row">
+            <p class="card-description">
+                Інформація про освіту:
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label asp-for="University" class="col-sm-3 col-form-label">Університет:</label>
+                <div class="col-sm-9">
+                    <input asp-for="University" type="text" class="form-control" />
+                    <span class="small" asp-validation-for="University"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label asp-for="Faculty" class="col-sm-3 col-form-label">Факультет:</label>
+                <div class="col-sm-9">
+                    <input asp-for="Faculty" type="text" class="form-control" />
+                    <span class="small" asp-validation-for="Faculty"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label asp-for="StudyYear" class="col-sm-3 col-form-label">Курс</label>
+                <div class="col-sm-9">
+                    <select asp-for="StudyYear" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <span class="small" asp-validation-for="StudyYear"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label asp-for="Skills" class="col-sm-3 col-form-label">Навички:</label>
+                <div class="col-sm-9">
+                    <textarea asp-for="Skills" type="text" class="form-control"></textarea>
+                    <span class="small" asp-validation-for="Skills"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if ((string)ViewData["Action"] == "Create")
+    {
+        <p class="card-description">
+            Налаштування безпеки:
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label asp-for="Password" class="col-sm-3 col-form-label">Пароль:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span class="small" asp-validation-for="Password"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label asp-for="ConfirmPassword" class="col-sm-3 col-form-label">Повторіть пароль:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                        <span class="small" asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <p class="card-description">
+        Інформація про статус:
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-check form-check-danger">
+                <label asp-for="IsBan" class="form-check-label">
+                    <input asp-for="IsBan" type="checkbox" class="form-check-input">
+                    Користувача заблоковано
+                    <i class="input-helper"></i>
+                </label>
+                <span class="small" asp-validation-for="IsBan"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-check form-check-success">
+                <label asp-for="HasAccess" class="form-check-label">
+                    <input asp-for="HasAccess" type="checkbox" class="form-check-input">
+                    Наявність доступу до ресурсу
+                    <i class="input-helper"></i>
+                </label>
+                <span class="small" asp-validation-for="HasAccess"></span>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2 mt-5">Зберегти</button>
+</form>

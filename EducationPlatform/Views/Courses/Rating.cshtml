@@ -1,0 +1,80 @@
+﻿@model EducationPlatform.Models.ViewModels.Courses.CourseRatingViewModel
+
+@{
+    ViewData["Title"] = "Рейтинг";
+}
+
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between">
+                    <div>
+                        <h3 class="card-title text-uppercase">Курс: <span>@Model.Course.Name</span></h3>
+
+                        <p class="mb-3">Викладач: <span class="font-weight-bold">@Model.Course.Teacher.LastName @Model.Course.Teacher.FirstName @Model.Course.Teacher.MiddleName</span></p>
+                        <p>Початок: <span class="font-weight-bold">@Model.Course.StartDate.ToString("dd.MM.yyyy")</span></p>
+                        <p class="mb-3">Кінець: <span class="font-weight-bold">@Model.Course.EndDate.ToString("dd.MM.yyyy")</span></p>
+                        <p class="mb-3">Модулів: <span class="font-weight-bold">@Model.Course.CourseModule.Count</span></p>
+                        <p class="mb-4">
+                            Опис: <span class="text-muted">
+                                @Model.Course.Subject.Description
+                            </span>
+                        </p>
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        @if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
+                        {
+                            <a href="@Url.Action("Edit", "Courses", new { courseId = Model.CourseId })" class="btn btn-inverse-warning btn-sm d-flex align-items-center">
+                                <i class="mdi mdi-lead-pencil"></i> <span class="ml-2">Редагувати</span>
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <h6>Рейтинг</h6>
+
+                    @if (Model.Marks.Count > 0)
+                    {
+                        <table class="datatable-table w-100">
+                            <thead>
+                                <tr>
+                                    <th class="visible">Студент</th>
+                                    <th class="visible">Оцінка за тести</th>
+                                    <th class="visible">Оцінка за лабораторні</th>
+                                    <th class="visible">Загалом</th>
+                                    <th>Дії</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Marks)
+                                {
+                                    <tr>
+                                        <td>@item.StudentName</td>
+                                        <td>@Model.MinTestSum / <span class="font-weight-bold">@item.TestMark</span> / @Model.MaxTestSum</td>
+                                        <td>@Model.MinLabSum / <span class="font-weight-bold">@item.LabMark</span> / @Model.MaxLabSum</td>
+                                        <td>@(Model.MinLabSum + Model.MinTestSum) / <span class="font-weight-bold">@(item.LabMark + item.TestMark)</span> / @(Model.MaxLabSum + Model.MaxTestSum)</td>
+                                        <td>
+                                            <form class="d-inline" method="get" asp-action="RatingStudent" asp-route-courseId="@Model.CourseId" asp-route-studentId="@item.StudentId">
+                                                <button title="Оцінити студента" type="submit" class="p-0 btn btn-inverse-success btn-icon">
+                                                    <i class="mdi mdi-star-circle"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div>Немає студентів!</div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

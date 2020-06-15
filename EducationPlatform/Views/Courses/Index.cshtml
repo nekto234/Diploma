@@ -1,0 +1,120 @@
+﻿@model EducationPlatform.Models.ViewModels.Courses.CoursesIndexViewModel
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<EducationPlatform.Models.Entities.User> UserManager
+
+@{
+    ViewData["Title"] = "Курси";
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Error
+    </div>
+}
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Message
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-start justify-content-between">
+                    <div>
+                        <h3 class="card-title text-uppercase">Курси</h3>
+                        <p class="mb-3">Усього в системі зареєстровано <span class="font-weight-bold">@Model.Courses.Count()</span> курсів</p>
+                    </div>
+                    <div>
+                        @if (User.IsInRole("Teacher") || User.IsInRole("Admin"))
+                        {
+                            <a class="btn btn-inverse-primary btn-sm d-flex align-items-center" asp-action="Create">
+                                <i class="mdi mdi-plus-circle"></i> <span class="ml-2">Додати</span>
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table datatable-table">
+                        <thead>
+                            <tr>
+                                <th class="visible">Назва</th>
+                                <th class="visible">Модулі</th>
+                                <th class="visible">Викладач</th>
+                                <th class="visible">Студенти</th>
+                                <th class="visible">Початок</th>
+                                <th class="visible">Кінець</th>
+                                @if (User.IsInRole("Student"))
+                                {
+                                    <th class="visible">Навчається на курсі</th>
+                                }
+                                <th>Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var course in Model.Courses)
+                            {
+                                <tr>
+                                    <td>@course.Name</td>
+                                    <td>@course.CourseModule.Count()</td>
+                                    <td>@course.Teacher.LastName @course.Teacher.FirstName @course.Teacher.MiddleName</td>
+                                    <td>@course.CourseStudent.Count()</td>
+                                    <td>@course.StartDate.ToString("dd.MM.yyyy")</td>
+                                    <td>@course.EndDate.ToString("dd.MM.yyyy")</td>
+                                    @if (User.IsInRole("Student"))
+                                    {
+                                        @if (course.CourseStudent.Select(x => x.Student.UserId).Contains(UserManager.GetUserId(User)))
+                                        {
+                                            <td>Так</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Ні</td>
+                                        }
+
+                                    }
+                                    <td class="text-center">
+                                        <form class="d-inline" method="get" asp-action="Details" asp-route-courseId="@course.CourseId">
+                                            <button title="Деталі" type="submit" class="p-0 btn btn-inverse-primary btn-icon">
+                                                <i class="mdi mdi-book-open"></i>
+                                            </button>
+                                        </form>
+                                        <form class="d-inline" method="get" asp-action="Rating" asp-route-courseId="@course.CourseId">
+                                            <button title="Рейтинг" type="submit" class="p-0 btn btn-inverse-success btn-icon">
+                                                <i class="mdi mdi-star-circle"></i>
+                                            </button>
+                                        </form>
+                                        @if ((User.IsInRole("Teacher") && UserManager.GetUserId(User).Equals(course.TeacherId)) || User.IsInRole("Admin"))
+                                        {
+                                            <form class="d-inline" method="get" asp-action="EditSchedule" asp-route-courseId="@course.CourseId">
+                                                <button title="Редагувати розклад" type="submit" class="p-0 btn btn-inverse-secondary btn-icon">
+                                                    <i class="mdi mdi-timetable"></i>
+                                                </button>
+                                            </form>
+                                            <form class="d-inline" method="get" asp-action="Edit" asp-route-courseId="@course.CourseId">
+                                                <button title="Редагувати курс" type="submit" class="p-0 btn btn-inverse-warning btn-icon">
+                                                    <i class="mdi mdi-lead-pencil"></i>
+                                                </button>
+                                            </form>
+                                            <form method="post">
+                                                <button title="Видалити курс" type="submit" class="p-0 btn btn-inverse-danger btn-icon" asp-action="Delete" asp-route-courseId="@course.CourseId">
+                                                    <i class="mdi mdi-delete-variant"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

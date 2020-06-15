@@ -1,0 +1,90 @@
+﻿@model EducationPlatform.Models.ViewModels.TeachersIndexViewModel
+
+@{
+    ViewData["Title"] = "Викладачі";
+}
+
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Error
+    </div>
+}
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Message
+    </div>
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <a asp-controller="Teachers" asp-action="Create" class="btn btn-inverse-primary btn-sm d-flex align-items-center float-right">
+            <i class="mdi mdi-plus-circle"></i> <span class="ml-2">Додати</span>
+        </a>
+        <h5 class="card-title">Викладачі</h5>
+        <p class="card-text">Усього в системі зареєстрованно викладчів: <span class="font-weight-bold">@Model.Teachers.Count()</span></p>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered ">
+                <thead class="text-center">
+                    <tr>
+                        <th>Ім'я викладача</th>
+                        <th>К-сть Курсів</th>
+                        <th>Статус</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var teacher in Model.Teachers)
+                    {
+                        <tr>
+                            <td>@teacher.LastName @teacher.FirstName @teacher.MiddleName</td>
+                            <td>0</td>
+                            @if (teacher.IsBanned == true)
+                            {
+                                <td><span class="badge badge-danger">Заблокований</span></td>
+                            }
+                            else if (teacher.IsBanned == false)
+                            {
+                                <td><span class="badge badge-success">Активний</span></td>
+                            }
+                        <td>
+                            <form class="d-inline" method="get" asp-action="Edit" asp-controller="Teachers" asp-route-email="@teacher.Email">
+                                <button type="submit" class="btn btn-inverse-info btn-sm align-items-center" data-toggle="tooltip" title="Редагувати викладача">
+                                    <i class="mdi mdi-lead-pencil"></i>
+                                </button>
+                            </form>
+                            <form class="d-inline" method="post" asp-action="Delete">
+                                <input type="hidden" name="Email" value="@teacher.Email" />
+                                <button type="submit" class="btn btn-inverse-danger btn-icon" data-toggle="tooltip" title="Видалити викладача">
+                                    <i class="mdi mdi-delete-variant"></i>
+                                </button>
+                            </form>
+                            @if (teacher.IsBanned == false)
+                            {
+                                <form class="d-inline" method="post" asp-action="Block" asp-controller="Account" asp-route-page="Teachers" asp-route-id="@teacher.Id">
+                                    <button type="submit" class="btn btn-inverse-dark btn-sm align-items-center" data-toggle="tooltip" title="Заблокувати викладача">
+                                        <i class="mdi mdi-block-helper"></i>
+                                    </button>
+                                </form>
+                            }
+                            @if (teacher.IsBanned == true)
+                            {
+                                <form class="d-inline" method="post" asp-action="UnBlock" asp-controller="Account" asp-route-page="Teachers" asp-route-id="@teacher.Id">
+                                    <button type="submit" class="btn btn-inverse-dark btn-sm align-items-center" data-toggle="tooltip" title="Розблокувати викладача">
+                                        <i class="mdi mdi-account-key"></i>
+                                    </button>
+                                </form>
+                            }
+                        </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

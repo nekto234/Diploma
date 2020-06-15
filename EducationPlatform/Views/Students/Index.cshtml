@@ -1,0 +1,117 @@
+﻿@using EducationPlatform.Models.EntityModels;
+@model IEnumerable<Student>;
+@{
+    ViewData["Title"] = "Студенти";
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Error
+    </div>
+}
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @ViewBag.Message
+    </div>
+}
+
+<div class="card">
+    <div class="card-body">
+        <a type="submit" class="btn btn-inverse-primary btn-sm d-flex align-items-center float-right" asp-controller="Students" asp-action="Create">
+            <i class="mdi mdi-plus-circle"></i> <span class="ml-2">Додати</span>
+        </a>
+        <h5 class="card-title">Усі студенти</h5>
+        <p class="card-text">Усього в системі зареєстрованно @Model.Count()</p>
+        <div class="table-responsive">
+            <table class="table table-hover datatable-table">
+                <thead class="text-center">
+                    <tr>
+                        <th class="visible">Ім'я студента</th>
+                        <th class="visible">Email</th>
+                        <th class="visible">Навички</th>
+                        <th class="visible">Статус</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.User.FirstName @item.User.LastName @item.User.MiddleName</td>
+                        <td>@item.User.Email</td>
+                        <td>@item.Skills</td>
+                        @if (item.User.IsBanned == true)
+                        {
+                            <td><span class="badge badge-danger">Заблокований</span></td>
+                        }
+                        else if (item.User.IsBanned == false && item.HasAccess.Value == true)
+                        {
+                            <td><span class="badge badge-success">Активний</span></td>
+                        }
+                        else if (!item.HasAccess.Value)
+                        {
+                            <td><span class="badge badge-warning">Не підтверджено</span></td>
+                        }
+
+                    <td>
+                        <form class="d-inline" method="get" asp-action="Edit" asp-route-id="@item.StudentId">
+                            <button type="submit" href="@Url.Action("Edit", "Students", new { id = item.StudentId })" class="btn btn-inverse-info btn-icon align-items-center" data-toggle="tooltip" title="Редагувати студента">
+                                <i class="mdi mdi-lead-pencil"></i>
+                            </button>
+                        </form>
+
+                        <form class="d-inline" method="post" asp-action="Delete" asp-route-id="@item.StudentId">
+                            <button type="submit" class="btn btn-inverse-danger btn-icon" data-toggle="tooltip" title="Видалити студента">
+                                <i class="mdi mdi-delete-variant"></i>
+                            </button>
+                        </form>
+
+                        @if (item.User.IsBanned == false)
+                        {
+                            <form class="d-inline" method="post" asp-action="Block" asp-controller="Account" asp-route-page="Students" asp-route-id="@item.User.Id">
+                                <button type="submit" class="btn btn-inverse-dark btn-icon align-items-center" data-toggle="tooltip" title="Заблокувати студента">
+                                    <i class="mdi mdi-block-helper"></i>
+                                </button>
+                            </form>
+
+
+                            @if (item.HasAccess.Value == false)
+                            {
+                                <form class="d-inline" method="post" asp-action="GrantAccess" asp-controller="Students" asp-route-id="@item.StudentId">
+                                    <button type="submit" class="btn btn-inverse-success btn-icon align-items-center" data-toggle="tooltip" title="Надати доступ">
+                                        <i class="mdi mdi-check"></i>
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form class="d-inline" method="post" asp-action="RevokeAccess" asp-controller="Students" asp-route-id="@item.StudentId">
+                                    <button type="submit" class="btn btn-inverse-warning btn-icon align-items-center" data-toggle="tooltip" title="Зняти доступ">
+                                        <i class="mdi mdi-close"></i>
+                                    </button>
+                                </form>
+                            }
+
+                        }
+                        else
+                        {
+                            <form class="d-inline" method="post" asp-action="UnBlock" asp-controller="Account" asp-route-page="Students" asp-route-id="@item.User.Id">
+                                <button type="submit" class="btn btn-inverse-dark btn-icon align-items-center" data-toggle="tooltip" title="Розблокувати студента">
+                                    <i class="mdi mdi-account-key"></i>
+                                </button>
+                            </form>
+                        }
+
+
+                    </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+﻿@model EducationPlatform.Models.ViewModels.Courses.CourseViewModel
+@using EducationPlatform.Models.ViewModels;
+@using EducationPlatform.Models.EntityModels;
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<EducationPlatform.Models.Entities.User> UserManager
+
+<form method="post" asp-action="@ViewData["Action"]" asp-controller="Courses" class="forms-sample mt-5">
+    <div class="form-group row">
+        <label asp-for="Name" class="col-sm-3 col-form-label">Назва</label>
+        <div class="col-sm-9">
+            <input asp-for="Name" type="text" class="form-control" />
+            <span asp-validation-for="Name"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="Subject" class="col-sm-3 col-form-label">Предмет</label>
+        <div class="col-sm-9">
+            <select asp-for="SubjectId" class="form-control text-dark">
+                @foreach (var item in (List<SubjectViewModel>)ViewData["Subjects"])
+                {
+                    <option value="@item.SubjectId">@item.Name</option>
+                }
+            </select>
+            <span asp-validation-for="Subject"></span>
+        </div>
+    </div>
+    @if (User.IsInRole("Teacher"))
+    {
+        <div class="form-group row">
+            <label asp-for="Teacher" class="col-sm-3 col-form-label">Викладач</label>
+            <div class="col-sm-9">
+                @Html.HiddenFor(x => x.TeacherId)
+                <select disabled class="form-control text-dark">
+                    @foreach (var item in (List<AspNetUsers>)ViewData["Teachers"])
+                    {
+                        if (item.Id.Equals(@UserManager.GetUserId(User)))
+                        {
+                            <option value="@item.Id">@item.LastName @item.FirstName</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="form-group row">
+            <label asp-for="Teacher" class="col-sm-3 col-form-label">Викладач</label>
+            <div class="col-sm-9">
+                <select asp-for="TeacherId" class="form-control text-dark">
+                    @foreach (var item in (List<AspNetUsers>)ViewData["Teachers"])
+                    {
+                        <option value="@item.Id">@item.LastName @item.FirstName</option>
+                    }
+                </select>
+                <span asp-validation-for="Teacher"></span>
+            </div>
+        </div>
+    }
+
+    <div class="form-group row">
+        <label asp-for="Start" class="col-sm-3 col-form-label">Початок</label>
+        <div class="col-sm-9">
+            <input asp-for="Start" type="date" class="form-control">
+            <span asp-validation-for="Start"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="End" class="col-sm-3 col-form-label">Кінець</label>
+        <div class="col-sm-9">
+            <input asp-for="End" type="date" class="form-control">
+            <span asp-validation-for="End"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mr-2">Далі</button>
+    <button type="reset" class="btn btn-light">Скасувати</button>
+</form>

@@ -1,0 +1,31 @@
+﻿@model EducationPlatform.Models.ViewModels.SubjectViewModel
+
+@{
+    ViewData["Title"] = "Редагування предмету";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Додати/Редагувати предмет @Model.Name</h5>
+            <form method="post" class="form-sample" asp-controller="Subjects" asp-action="Edit">
+                @Html.HiddenFor(x => x.SubjectId)
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Name"></label>
+                    <input type="text" asp-for="Name" id="Name" class="form-control form-control-sm" maxlength="64" placeholder="ASP.NET...">
+                </div>
+                <div class="form-group">
+                    <label for="description">Опис</label>
+                    <textarea asp-for="Description" id="description" class="form-control form-control-sm" maxlength="256" name="description" placeholder="Subject description"></textarea>
+                </div>
+                <button class="btn btn-primary mr-2" type="submit">Зберегти</button>
+                <button class="btn btn-light mr-2" type="reset">Скасувати</button>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+

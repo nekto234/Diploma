@@ -1,0 +1,9 @@
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+svg {
+    width: 180px;
+}

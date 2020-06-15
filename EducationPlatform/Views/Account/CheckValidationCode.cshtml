@@ -1,0 +1,28 @@
+﻿@model EducationPlatform.Models.ViewModels.TwoFactorViewModel
+@{
+    ViewData["Title"] = "TwoFactorAuthorization";
+    Layout = "_LayoutAuth";
+}
+
+
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <h4>Двофакторна аутентифікація</h4>
+                        <form method="post" asp-controller="Account" asp-action="TwoFactorAuth"  class="pt-3">
+                            <div class="form-group">
+                                <input type="number" class="form-control form-control-lg"
+                                      asp-for="Code" placeholder="Код">
+                                <input type="hidden" class="form-control form-control-lg"
+                                       value="@ViewBag.Email" name="Email" placeholder="Код">
+                            </div>
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-block btn-primary font-weight-medium auth-form-btn">Підтвердити</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>

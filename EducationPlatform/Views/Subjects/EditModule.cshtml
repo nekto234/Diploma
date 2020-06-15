@@ -1,0 +1,89 @@
+﻿@model EducationPlatform.Models.ViewModels.ModuleViewModel
+
+@{
+    ViewData["Title"] = "Редагування модуля";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Редагувати модуль @Model.Name</h5>
+            <form method="post" class="forms-sample" asp-controller="Subjects" asp-action="EditModule" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                @Html.HiddenFor(x => x.Subject.SubjectId)
+                @Html.HiddenFor(x => x.ModuleId)
+                <div class="form-group row mb-2">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Назва</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="Name" class="form-control form-control-sm" id="exampleInputUsername2"
+                               placeholder="Назва">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Опис</label>
+                    <div class="col-sm-9">
+                        <textarea asp-for="Description" class="form-control form-control-sm" id="exampleInputEmail2"
+                                  placeholder="Опис"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label m-0">Тест</label>
+                    <div class="col-sm-6 d-flex align-items-center">
+                        <div class="form-check form-check-flat form-check-primary">
+                            <label class="form-check-label mark-label-checkbox">
+                                <input asp-for="HasTest" type="checkbox" id="checkboxTest" class="form-check-input">
+                            </label>
+                        </div>
+                        @if (Model.HasTest)
+                        {
+                            <input asp-for="MinTestMark" type="number" min="0" id="minValTest" class="form-control form-control-sm mark-control" placeholder="min">
+                            <span class="mx-2">/</span>
+                            <input asp-for="MaxTestMark" type="number" min="0" id="maxValTest" class="form-control form-control-sm mark-control" placeholder="max">
+                        }
+                        else
+                        {
+                            <input asp-for="MinTestMark" type="number" min="0" disabled id="minValTest" class="form-control form-control-sm mark-control" placeholder="min">
+                            <span class="mx-2">/</span>
+                            <input asp-for="MaxTestMark" type="number" min="0" disabled id="maxValTest" class="form-control form-control-sm mark-control" placeholder="max">
+                        }
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label m-0">Лабораторна робота</label>
+                    <div class="col-sm-6 d-flex align-items-center">
+                        <div class="form-check form-check-flat form-check-primary">
+                            <label class="form-check-label mark-label-checkbox">
+                                <input asp-for="HasLab" type="checkbox" id="checkboxLab" class="form-check-input">
+                            </label>
+                        </div>
+                        @if (Model.HasLab)
+                        {
+                            <input asp-for="MinLabMark" type="number" min="0" id="minValLab" class="form-control form-control-sm mark-control" placeholder="min">
+                            <span class="mx-2">/</span>
+                            <input asp-for="MaxLabMark" type="number" min="0" id="maxValLab" class="form-control form-control-sm mark-control" placeholder="max">
+
+                        }
+                        else
+                        {
+                            <input asp-for="MinLabMark" type="number" disabled min="0" id="minValLab" class="form-control form-control-sm mark-control" placeholder="min">
+                            <span class="mx-2">/</span>
+                            <input asp-for="MaxLabMark" type="number" disabled min="0" id="maxValLab" class="form-control form-control-sm mark-control" placeholder="max">
+                        }
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="input-group col-xs-12">
+                        <input type="file" asp-for="Files" class="form-control file-upload-info" multiple />
+                    </div>
+                    
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Зберегти</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script src="~/js/filterModule.js"></script>
+}

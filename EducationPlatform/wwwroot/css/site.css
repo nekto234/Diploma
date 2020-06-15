@@ -1,0 +1,62 @@
+﻿.input-validation-error {
+    border-color: var(--danger);
+}
+.input-validation-error + span {
+    color: var(--danger);
+}
+.validation-summary-errors ul {
+    list-style: none;
+    color: var(--danger);
+    padding: 0;
+}
+
+.dataTables_wrapper .dt-buttons {
+    float: left;
+}
+
+.dataTables_wrapper {
+    margin-top: 1rem;
+}
+
+.dataTables_wrapper .dataTable .btn {
+    padding: 0 !important;
+}
+
+.navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand.brand-logo img {
+    height: 50px;
+}
+
+.logout-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    text-align: left;
+    padding: 0.65rem 1.5rem;
+}
+
+.logout-btn:hover {
+    background-color: #eaeaf1;
+}
+
+.mark-control {
+    max-width: 100px;
+}
+
+.form-check-label.mark-label-checkbox {
+    margin: 0;
+    margin-right: 2.5rem;
+}
+
+.fc-center h2 {
+    font-size: 16px !important;
+}
+
+.fc-event .fc-title {
+    color: var(--white);
+}
+
+.chat-box {
+    overflow: auto;
+    max-height: calc(100vh - 174px);
+}

@@ -1,0 +1,52 @@
+﻿@model EducationPlatform.Models.ViewModels.ModuleFileListViewModel
+
+@{
+    ViewData["Title"] = "ModuleFiles";
+    var i = 0;
+}
+
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">МОДУЛЬ: @Model.Module.Name</h4>
+            <p>Опис: @Model.Module.Description</p>
+
+            <p>Файлів на курсі: @Model.Files.Count</p>
+
+            @if (Model.Files.Count > 0)
+            {
+                <ul>
+                    @foreach(var f in Model.Files)
+                    {
+                         {++i;}
+                        <li>
+                            <a href="@f.FileUrl" target="_blank">Файл @i</a>
+                            @if  (f.FileUrl.Contains("mp4"))
+                            {
+                                <div>
+                                    <video width="700" height="400" controls>
+                                        <source src="@f.FileUrl" type="video/mp4">
+                                        @*<source src="movie.ogg" type="video/ogg">*@
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+
+                            } else if (f.FileUrl.Contains("jpg") || f.FileUrl.Contains("png"))
+                            {
+                                <div>
+                                    <img src="@f.FileUrl" style="max-width: 600px;" alt="Alternate Text" />
+                                </div>
+                            }
+                        </li>
+                        
+
+                    }
+
+                </ul>
+            }
+
+        </div>
+    </div>
+</div>

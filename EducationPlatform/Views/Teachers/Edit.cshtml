@@ -1,0 +1,20 @@
+﻿@model EducationPlatform.Models.ViewModels.UserViewModel
+@{
+    ViewData["Title"] = "Редагування викладача";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Редагувати викладача</h5>
+            @await Html.PartialAsync("_TeacherForm", Model, ViewData)
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,90 @@
+﻿@model EducationPlatform.Models.ViewModels.Courses.CourseStudentMarksViewModel
+
+@{
+    ViewData["Title"] = "Встановлення студента";
+}
+
+<div class="row">
+    <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h3 class="card-title text-uppercase">Курс: <span>@Model.Course.Name</span></h3>
+
+                    <p class="mb-3">Викладач: <span class="font-weight-bold">@Model.Course.Teacher.LastName @Model.Course.Teacher.FirstName @Model.Course.Teacher.MiddleName</span></p>
+                    <p>Початок: <span class="font-weight-bold">@Model.Course.StartDate.ToString("dd.MM.yyyy")</span></p>
+                    <p class="mb-3">Кінець: <span class="font-weight-bold">@Model.Course.EndDate.ToString("dd.MM.yyyy")</span></p>
+                    <p class="mb-3">Модулів: <span class="font-weight-bold">@Model.Course.CourseModule.Count</span></p>
+                    <p class="mb-4">
+                        Опис: <span class="text-muted">
+                            @Model.Subject.Description
+                        </span>
+                    </p>
+                </div>
+
+                <h5>Рейтинг</h5>
+                <p class="mb-3">Студент: <span class="font-weight-bold">@Model.CurrentStudent.User.LastName @Model.CurrentStudent.User.FirstName @Model.CurrentStudent.User.MiddleName</span></p>
+
+                @if (Model.Marks.Count > 0)
+                {
+                    <form asp-action="SetStudentMark" asp-controller="Courses">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Модуль</th>
+                                        <th class="text-center">Оцінка за тест</th>
+                                        <th class="text-center">Оцінка за лабораторну</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var i = 0; i < Model.Marks.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.Marks[i].ModuleName
+                                                <input type="hidden" asp-for="Marks[i].ModuleName" />
+                                                <input type="hidden" asp-for="Marks[i].ModuleId" />
+                                                <input type="hidden" asp-for="Marks[i].CourseModuleId" />
+                                                <input type="hidden" asp-for="Marks[i].StudentId" />
+                                            </td>
+                                            @if (Model.Marks[i].Module.HasTest)
+                                            {
+                                                <td class="text-center">
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        @Model.Marks[i].Module.MinTestMark / <input type="number" asp-for="Marks[i].TestMark" min="@Model.Marks[i].Module.MinTestMark" max="@Model.Marks[i].Module.MaxTestMark" class="form-control mark-control form-control-sm text-center mx-1"> / @Model.Marks[i].Module.MaxTestMark
+                                                    </div>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center">-</td>
+                                            }
+
+                                            @if (Model.Marks[i].Module.HasLab)
+                                            {
+                                                <td class="text-center">
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        @Model.Marks[i].Module.MinLabMark / <input type="number" asp-for="Marks[i].LabMark" min="@Model.Marks[i].Module.MinLabMark" max="@Model.Marks[i].Module.MaxLabMark" class="form-control mark-control form-control-sm text-center mx-1"> / @Model.Marks[i].Module.MaxLabMark
+                                                    </div>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center">-</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <button type="submit" class="btn btn-primary mt-3 mr-2">Зберегти</button>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <div>Не знайдено жодного модуля на курсі!</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

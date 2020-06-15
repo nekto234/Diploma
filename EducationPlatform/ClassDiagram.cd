@@ -1,0 +1,619 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EducationPlatform.Controllers.AccountController" Collapsed="true">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASEBAABIAAABAQAAQBAAkIAAACBAKAHAAERAAAAAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Controllers.CalendarController" Collapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAkCAAAAAAA=</HashCode>
+      <FileName>Controllers\CalendarController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Controllers.ChatController" Collapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ChatController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Controllers.CoursesController" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQQABABAAQABAAAAABAAABIAAAmAAEECQAECAAAAAAA=</HashCode>
+      <FileName>Controllers\CoursesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Controllers.HomeController" Collapsed="true">
+    <Position X="8" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAFAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Controllers.ProfileController" Collapsed="true">
+    <Position X="9.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAQAAABAAAAAAAAQAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Controllers\ProfileController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Controllers.StatisticsController" Collapsed="true">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAQAAAABAABAAAAAAAABAAAAAAAACECAAAAAAA=</HashCode>
+      <FileName>Controllers\StatisticsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Controllers.StudentsController" Collapsed="true">
+    <Position X="8" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAAAAABAAAABAAAAAAAAEAAEACAAEAACBAAAA=</HashCode>
+      <FileName>Controllers\StudentsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Controllers.SubjectsController" Collapsed="true">
+    <Position X="15" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAACAAIQAAEAAEACAEEAAAAAQgA=</HashCode>
+      <FileName>Controllers\SubjectsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Controllers.TeachersController" Collapsed="true">
+    <Position X="4.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAABAAAAAAAAAAAAAEAAEACAAEAAABAAAA=</HashCode>
+      <FileName>Controllers\TeachersController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Hubs.ChatHub" Collapsed="true">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAABAAAAAAABAAAACAACBAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hubs\ChatHub.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.ApplicationDb.ChangedUser" Collapsed="true">
+    <Position X="1" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\ApplicationDb\20200208124606_ChangedUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.ApplicationDb.ApplicationDbContextModelSnapshot" Collapsed="true">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\ApplicationDb\ApplicationDbContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.BaseDbStructure" Collapsed="true">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20200202150232_BaseDbStructure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.ChangedStudentTable" Collapsed="true">
+    <Position X="15" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20200204114134_ChangedStudentTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.AddNameColumnToCourseTable" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20200205175622_AddNameColumnToCourseTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.AddedSubjectIdAndRemoveUnnecessaryColumns" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20200205225943_AddedSubjectIdAndRemoveUnnecessaryColumns.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.AddChat" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20200207112336_AddChat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.ChangedDbModuleFilesAndAuthAndComments" Collapsed="true">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20200208122012_ChangedDbModuleFilesAndAuthAndComments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.AddedTwoFactorTable" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20200208132756_AddedTwoFactorTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Migrations.EducationPlatformContextModelSnapshot" Collapsed="true">
+    <Position X="15" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\EducationPlatformContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.Entities.ApplicationDbContext" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\ApplicationDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.Entities.User" Collapsed="true">
+    <Position X="11.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Models\Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.AspNetRoleClaims" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAIAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\EntityModels\AspNetRoleClaims.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.AspNetRoles" Collapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAQAAAAAAAAQAAAAAAAAACBAABAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\AspNetRoles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.AspNetUserClaims" Collapsed="true">
+    <Position X="1" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\EntityModels\AspNetUserClaims.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.AspNetUserLogins" Collapsed="true">
+    <Position X="2.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAgAAAAAEAAAABAAAAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\AspNetUserLogins.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.AspNetUserRoles" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\AspNetUserRoles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.AspNetUsers" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAEAARCAAoFAIAIBQQAABQAAAQAAIARQABACAAQg=</HashCode>
+      <FileName>Models\EntityModels\AspNetUsers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.AspNetUserTokens" Collapsed="true">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAwAAAAAEAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\AspNetUserTokens.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.Chat" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAIAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\Chat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.Comments" Collapsed="true">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAACAAAAgAAAAQAAAgAACAAAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\Comments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.Course" Collapsed="true">
+    <Position X="11.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAAAEAAAAAAAAIAACAQgAAAAAAQAAAAAAEIAAAA=</HashCode>
+      <FileName>Models\EntityModels\Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.CourseModule" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAIAAAAQAAAAAAAABIACACAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\CourseModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.CourseStudent" Collapsed="true">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEEAAAQAAAAAAAAIAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\EntityModels\CourseStudent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.EducationPlatformContext" Collapsed="true">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAQQQAAgAAAAIBAAAAAEAAAQAwACBCACAKAoAE=</HashCode>
+      <FileName>Models\EntityModels\educationplatformContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.Mark" Collapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAQAAAAQAAAAAAAAAAAAAQAAQAIAAAAAACIAA=</HashCode>
+      <FileName>Models\EntityModels\Mark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.Module" Collapsed="true">
+    <Position X="15" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAEAAgAAAEAMAAACQAQAAIAARAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\Module.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.ModuleFile" Collapsed="true">
+    <Position X="1" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAACAAAABA=</HashCode>
+      <FileName>Models\EntityModels\ModuleFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.OnlineList" Collapsed="true">
+    <Position X="8" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\OnlineList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.Student" Collapsed="true">
+    <Position X="4.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAJAAAAAAAAAIAAEAAAAAgAAAAAAAIAAACAAAICAAA=</HashCode>
+      <FileName>Models\EntityModels\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.Subject" Collapsed="true">
+    <Position X="13.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAgAAAAAIAAAAQAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\Subject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.EntityModels.TwoFactorUser" Collapsed="true">
+    <Position X="8" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAABAAAAAAAAAAAAAAAgAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EntityModels\TwoFactorUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseDetailsViewModel" Collapsed="true">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseDetailsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseEditModulesViewModel" Collapsed="true">
+    <Position X="15" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAEAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseEditModulesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseEditSchedulesViewModel" Collapsed="true">
+    <Position X="1" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseEditSchedulesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseEditStudentsViewModel" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseEditStudentsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseModuleEditViewModel" Collapsed="true">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAABAAAAAAAAAAI=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseModuleEditViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseModuleMarksViewModel" Collapsed="true">
+    <Position X="8" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAEAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseModuleMarksViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseModuleStudentsMark" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgBAAAAAAAAQAAAAAAAAAAAAAAAAAAIAAACAACAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseModuleStudentsMark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseRatingViewModel" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEAAAAAIAAAAAAAIAAAAAAAAIAAAAAAAQAAIAAAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseRatingViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CoursesIndexViewModel" Collapsed="true">
+    <Position X="15" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CoursesIndexViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseStudentEditViewModel" Collapsed="true">
+    <Position X="4.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseStudentEditViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseStudentMarksViewModel" Collapsed="true">
+    <Position X="6.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAYAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseStudentMarksViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseStudentModuleChat" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAgAAAAQAAAAAACAAAAAIAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseStudentModuleChat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseStudentModulesMark" Collapsed="true">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAQAAAAAAAAQAAAAQAAACIAAACAACAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseStudentModulesMark.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.Courses.CourseViewModel" Collapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMEAAAAECAgAAAAAIAACAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\Courses\CourseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.ChatViewModel" Collapsed="true">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\ViewModels\ChatViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.EmailDeleteTeacherViewModel" Collapsed="true">
+    <Position X="1" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\EmailDeleteTeacherViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.ForgotPasswordViewModel" Collapsed="true">
+    <Position X="6.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\ForgotPasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.LoginViewModel" Collapsed="true">
+    <Position X="9.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAIAAAAgAAA=</HashCode>
+      <FileName>Models\ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.MessageViewModel" Collapsed="true">
+    <Position X="13.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAASA=</HashCode>
+      <FileName>Models\ViewModels\MessageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.ModuleFileListViewModel" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAIA=</HashCode>
+      <FileName>Models\ViewModels\ModuleFileListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.ModuleViewModel" Collapsed="true">
+    <Position X="6.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAEAAgAAAEAMAAACQAQAAIAABAAAAAAAAAAIA=</HashCode>
+      <FileName>Models\ViewModels\ModuleViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.RegisterViewModel" Collapsed="true">
+    <Position X="13.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEAAACAAAIAAEAAQQAAAgAAAAAICAAAAAAAAAAg=</HashCode>
+      <FileName>Models\ViewModels\RegisterViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.ResetPasswordViewModel" Collapsed="true">
+    <Position X="15" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAgAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\ViewModels\ResetPasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.StudentFormViewModel" Collapsed="true">
+    <Position X="6.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAKCEAAACAAAIAAEAAQQAAAAAAAAAICAAAAAAACIAg=</HashCode>
+      <FileName>Models\ViewModels\StudentFormViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.StudentViewModel" Collapsed="true">
+    <Position X="11.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAJAAAAAAAAAIAAEAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\StudentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.SubjectViewModel" Collapsed="true">
+    <Position X="2.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAgAAAAAAAAAAQAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\SubjectViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.TeachersIndexViewModel" Collapsed="true">
+    <Position X="6.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\ViewModels\TeachersIndexViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.TwoFactorViewModel" Collapsed="true">
+    <Position X="9.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\TwoFactorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ViewModels.UserViewModel" Collapsed="true">
+    <Position X="15" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAABAAAAAQQAAAAAAAAAACAQAAAAAAAAg=</HashCode>
+      <FileName>Models\ViewModels\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Models.ErrorViewModel" Collapsed="true">
+    <Position X="4.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ErrorViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Services.Repositories.CoursesRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAFAABAAABCAAAABEwAAQAAWAQAAAAAQBABAAAIA=</HashCode>
+      <FileName>Services\Repositories\CoursesRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EducationPlatform.Services.Repositories.ModulesRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAEAAAAAABAAAAAAAAAAAABEAAEBAAAgAAAAAAIA=</HashCode>
+      <FileName>Services\Repositories\ModulesRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EducationPlatform.Services.Repositories.StudentsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAABAABAAAAAAABIAgAACAQAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Services\Repositories\StudentsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EducationPlatform.Services.Repositories.SubjectsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAABAAABAAAAAAAAAEAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Services\Repositories\SubjectsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EducationPlatform.Services.Repositories.UsersRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQABACAAAQABAAAAABADIAAAACAAAEAABACgAAAAAA=</HashCode>
+      <FileName>Services\Repositories\UsersRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EducationPlatform.Services.EmailSender" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAAABQAAAAE=</HashCode>
+      <FileName>Services\EmailSender.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EducationPlatform.Program" Collapsed="true">
+    <Position X="11.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EducationPlatform.Startup" Collapsed="true">
+    <Position X="1" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAIAAAAAAAAgAAACAAAAAA=</HashCode>
+      <FileName>Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="EducationPlatform.Services.Interfaces.ICoursesRepository" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAFAABAAAACAAAABEwAAQAAWAQAAAAAQBABAAAIA=</HashCode>
+      <FileName>Services\Interfaces\ICoursesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EducationPlatform.Services.Interfaces.IEmailSender" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IEmailSender.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EducationPlatform.Services.Interfaces.IModulesRepository" Collapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAEAAAAAAAAAAAAAAAAAAABEAAEAAAAgAAAAAAIA=</HashCode>
+      <FileName>Services\Interfaces\IModulesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EducationPlatform.Services.Interfaces.IStudentsRepository" Collapsed="true">
+    <Position X="16.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAABAAAAAAAAAABIAgAACAQAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Services\Interfaces\IStudentsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EducationPlatform.Services.Interfaces.ISubjectsRepository" Collapsed="true">
+    <Position X="16.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAABAAAAAAAAAEAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Services\Interfaces\ISubjectsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="EducationPlatform.Services.Interfaces.IUsersRepository" Collapsed="true">
+    <Position X="16.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAACAAAQAAAAAAAAABAAAAACAAAAAABACgAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IUsersRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
